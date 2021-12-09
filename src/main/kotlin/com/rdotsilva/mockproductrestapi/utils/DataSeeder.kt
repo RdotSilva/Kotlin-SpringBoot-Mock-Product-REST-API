@@ -14,6 +14,7 @@ class DataSeeder(private val productRepository: ProductRepository): ApplicationR
      */
     override fun run(args: ApplicationArguments?) {
         for (i in 1..50) {
+            // TODO: Investigate seeder only seeding one item and IDs are missing
             val product = Product()
             product.title = "Title # $i"
             product.description = "Description # ${i + 1}"
