@@ -177,3 +177,6 @@ gradle-app.setting
 
 ### Gradle Patch ###
 **/build/
+
+#Properties
+application.properties
