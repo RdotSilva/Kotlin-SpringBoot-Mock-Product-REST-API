@@ -180,3 +180,4 @@ gradle-app.setting
 
 #Properties
 application.properties
+application.yml
