@@ -15,12 +15,17 @@ class DataSeeder(private val productRepository: ProductRepository): ApplicationR
     override fun run(args: ApplicationArguments?) {
         for (i in 1..50) {
             // TODO: Investigate seeder only seeding one item and IDs are missing
-            val product = Product()
-            product.title = "Title # $i"
-            product.description = "Description # ${i + 1}"
-            product.image = "http://lorempixel.com/200/200?=${Random.nextInt(10000)}"
-            product.price = Random.nextInt(10, 100)
+            val product = createRandomProduct(i)
             this.productRepository.save(product)
         }
+    }
+
+    fun createRandomProduct(i: Int): Product {
+        val product = Product()
+        product.title = "Title # $i"
+        product.description = "Description # ${i + 1}"
+        product.image = "http://lorempixel.com/200/200?=${Random.nextInt(10000)}"
+        product.price = Random.nextInt(10, 100)
+        return product
     }
 }
