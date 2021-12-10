@@ -3,10 +3,10 @@ package com.rdotsilva.mockproductrestapi.models
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document
+@Document()
 class Product {
     @Id
-    var _id = ""
+    var id = ""
     var title = ""
     var description = ""
     var image = ""
