@@ -20,12 +20,16 @@ class DataSeeder(private val productRepository: ProductRepository): ApplicationR
         }
     }
 
-    fun createRandomProduct(i: Int): Product {
-        val product = Product()
-        product.title = "Title # $i"
-        product.description = "Description # ${i + 1}"
-        product.image = "http://lorempixel.com/200/200?=${Random.nextInt(10000)}"
-        product.price = Random.nextInt(10, 100)
-        return product
+    /**
+     * Generate a random mock Product with unique metadata
+     * @param randomNumber random number used to generate Product metadata
+     */
+    fun createRandomProduct(randomNumber: Int): Product {
+        return Product(
+            title = "Title # $randomNumber",
+            description = "Description # ${randomNumber + 1}",
+            image = "http://lorempixel.com/200/200?=${Random.nextInt(10000)}",
+            price = Random.nextInt(10, 100)
+        )
     }
 }
