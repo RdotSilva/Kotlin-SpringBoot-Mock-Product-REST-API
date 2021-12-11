@@ -2,7 +2,6 @@ package com.rdotsilva.mockproductrestapi.controllers
 
 import com.rdotsilva.mockproductrestapi.models.Product
 import com.rdotsilva.mockproductrestapi.repositories.ProductRepository
-import org.springframework.boot.context.properties.bind.DefaultValue
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,8 +20,8 @@ class ProductController(private val productRepository: ProductRepository) {
         return ResponseEntity.ok(this.productRepository.findAll())
     }
 
-    @GetMapping("/products")
+    @GetMapping("/products/search")
     fun getProductByTitle(@RequestParam("title", defaultValue = "") title: String,): ResponseEntity<List<Product>> {
-        return ResponseEntity.ok(this.productRepository.findAll())
+        return ResponseEntity.ok(this.productRepository.searchByTitle(title))
     }
 }
