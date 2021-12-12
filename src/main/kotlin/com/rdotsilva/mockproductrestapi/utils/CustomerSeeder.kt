@@ -15,4 +15,16 @@ class CustomerSeeder(private val customerRepository: CustomerRepository): Applic
             this.customerRepository.save(customer)
         }
     }
+
+    /**
+     * Generate a random mock Customer with unique metadata
+     * @param randomNumber random number used to generate Product metadata
+     */
+    fun createRandomCustomer(randomNumber: Int): Customer {
+        val faker = Faker()
+        return Customer(
+            firstName = faker.name.firstName(),
+            lastName = faker.name.lastName()
+        )
+    }
 }
