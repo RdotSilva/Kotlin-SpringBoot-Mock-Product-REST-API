@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component
 
 @Component
-class CustomerSeeder(private val customerRepository: CustomerRepository): ApplicationRunner {
+class CustomerSeeder(private val customerRepository: CustomerRepository) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
         for (i in 1..50) {
             val customer = createRandomCustomer(i)
@@ -24,7 +24,9 @@ class CustomerSeeder(private val customerRepository: CustomerRepository): Applic
         val faker = Faker()
         return Customer(
             firstName = faker.name.firstName(),
-            lastName = faker.name.lastName()
+            lastName = faker.name.lastName(),
+            email = faker.internet.safeEmail(),
+            onMailingList = Math.random() < 0.5
         )
     }
 }
