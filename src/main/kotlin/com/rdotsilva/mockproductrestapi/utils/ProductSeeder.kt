@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 import kotlin.random.Random
 
 @Component
-class DataSeeder(private val productRepository: ProductRepository): ApplicationRunner {
+class ProductSeeder(private val productRepository: ProductRepository): ApplicationRunner {
     /**
      * Generate 50 and seed 50 random products
      */
