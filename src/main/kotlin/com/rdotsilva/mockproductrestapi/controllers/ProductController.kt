@@ -20,8 +20,11 @@ class ProductController(private val productRepository: ProductRepository) {
         return ResponseEntity.ok(this.productRepository.findAll())
     }
 
+    /**
+     * Get request to fetch product by title
+     */
     @GetMapping("/products/search")
-    fun getProductByTitle(@RequestParam("title", defaultValue = "") title: String,): ResponseEntity<List<Product>> {
+    fun getProductByTitle(@RequestParam("title", defaultValue = "") title: String): ResponseEntity<List<Product>> {
         return ResponseEntity.ok(this.productRepository.searchByTitle(title))
     }
 }
