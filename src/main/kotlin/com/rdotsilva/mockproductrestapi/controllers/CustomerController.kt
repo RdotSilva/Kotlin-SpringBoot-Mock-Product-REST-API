@@ -3,11 +3,13 @@ package com.rdotsilva.mockproductrestapi.controllers
 import com.rdotsilva.mockproductrestapi.models.Customer
 import com.rdotsilva.mockproductrestapi.models.Product
 import com.rdotsilva.mockproductrestapi.repositories.CustomerRepository
+import org.bson.types.ObjectId
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 
 @RestController
 @RequestMapping("api")
@@ -34,5 +36,8 @@ class CustomerController(private val customerRepository: CustomerRepository) {
         return ResponseEntity.ok(this.customerRepository.findByOnMailingList(onMailingList))
     }
 
-
+    @GetMapping("/customer")
+    fun getCustomerById(@RequestParam("id") id: String): ResponseEntity<Optional<Customer>> {
+        return ResponseEntity.ok(this.customerRepository.findById(id))
+    }
 }
