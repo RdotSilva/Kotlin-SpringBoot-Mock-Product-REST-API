@@ -5,10 +5,7 @@ import com.rdotsilva.mockproductrestapi.models.Product
 import com.rdotsilva.mockproductrestapi.repositories.CustomerRepository
 import org.bson.types.ObjectId
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
@@ -39,5 +36,10 @@ class CustomerController(private val customerRepository: CustomerRepository) {
     @GetMapping("/customer")
     fun getCustomerById(@RequestParam("id") id: String): ResponseEntity<Optional<Customer>> {
         return ResponseEntity.ok(this.customerRepository.findById(id))
+    }
+
+    @PostMapping("/customer/add")
+    fun addCustomer(@RequestBody customer: Customer) {
+        this.customerRepository.save(customer)
     }
 }
