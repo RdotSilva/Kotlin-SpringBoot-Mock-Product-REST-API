@@ -44,8 +44,7 @@ class CustomerController(private val customerRepository: CustomerRepository) {
     }
 
     @DeleteMapping("/customer/remove/{id}")
-    fun removeCustomer(@PathVariable("id") id: String) {
-        // TODO: Fix endpoint, doesn't seem to be removing customer
+    fun removeCustomer(@PathVariable id: String) {
         this.customerRepository.deleteById(id)
     }
 }
