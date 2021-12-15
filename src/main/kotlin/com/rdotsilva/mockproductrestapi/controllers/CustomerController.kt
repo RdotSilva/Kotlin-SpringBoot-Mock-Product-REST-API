@@ -33,16 +33,25 @@ class CustomerController(private val customerRepository: CustomerRepository) {
         return ResponseEntity.ok(this.customerRepository.findByOnMailingList(onMailingList))
     }
 
+    /**
+     * Get request to fetch customer by ID
+     */
     @GetMapping("/customer")
     fun getCustomerById(@RequestParam("id") id: String): ResponseEntity<Optional<Customer>> {
         return ResponseEntity.ok(this.customerRepository.findById(id))
     }
 
+    /**
+     * Post request to add a new customer
+     */
     @PostMapping()
     fun addCustomer(@RequestBody customer: Customer) {
         this.customerRepository.save(customer)
     }
 
+    /**
+     * Delete request to remove a customer by ID
+     */
     @DeleteMapping("/{id}")
     fun removeCustomer(@PathVariable id: String) {
         this.customerRepository.deleteById(id)
