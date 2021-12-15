@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/customers")
 class CustomerController(private val customerRepository: CustomerRepository) {
 
     /**
      * Get request to fetch all customers
      */
-    @GetMapping("/customers")
+    @GetMapping()
     fun getAllCustomers(): ResponseEntity<List<Customer>> {
         return ResponseEntity.ok(this.customerRepository.findAll())
     }
@@ -23,7 +23,7 @@ class CustomerController(private val customerRepository: CustomerRepository) {
     /**
      * Get request to fetch all customer emails on mailing list
      */
-    @GetMapping("/customers/mailinglist")
+    @GetMapping("/mailinglist")
     fun getAllCustomersOnMailingList(
         @RequestParam(
             "onMailingList",
@@ -38,12 +38,12 @@ class CustomerController(private val customerRepository: CustomerRepository) {
         return ResponseEntity.ok(this.customerRepository.findById(id))
     }
 
-    @PostMapping("/customer/add")
+    @PostMapping()
     fun addCustomer(@RequestBody customer: Customer) {
         this.customerRepository.save(customer)
     }
 
-    @DeleteMapping("/customer/remove/{id}")
+    @DeleteMapping("/{id}")
     fun removeCustomer(@PathVariable id: String) {
         this.customerRepository.deleteById(id)
     }
