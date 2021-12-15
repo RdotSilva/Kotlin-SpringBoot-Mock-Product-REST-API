@@ -37,6 +37,7 @@ class CustomerController(private val customerRepository: CustomerRepository) {
      * Get request to fetch customer by ID
      */
     @GetMapping("/customer")
+    // TODO: Refactor this to use path for ID
     fun getCustomerById(@RequestParam("id") id: String): ResponseEntity<Optional<Customer>> {
         return ResponseEntity.ok(this.customerRepository.findById(id))
     }
