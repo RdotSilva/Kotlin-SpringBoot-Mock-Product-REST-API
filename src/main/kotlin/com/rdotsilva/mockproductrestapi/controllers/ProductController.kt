@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/products")
 class ProductController(private val productRepository: ProductRepository) {
 
     /**
      * Get request to fetch all products
      */
-    @GetMapping("/products")
+    @GetMapping()
     fun allProducts(): ResponseEntity<List<Product>> {
         return ResponseEntity.ok(this.productRepository.findAll())
     }
@@ -23,7 +23,7 @@ class ProductController(private val productRepository: ProductRepository) {
     /**
      * Get request to fetch product by title
      */
-    @GetMapping("/products/search")
+    @GetMapping("/search")
     fun getProductByTitle(@RequestParam("title", defaultValue = "") title: String): ResponseEntity<List<Product>> {
         return ResponseEntity.ok(this.productRepository.searchByTitle(title))
     }
