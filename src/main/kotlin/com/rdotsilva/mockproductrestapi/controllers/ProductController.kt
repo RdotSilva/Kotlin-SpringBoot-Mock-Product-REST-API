@@ -34,4 +34,12 @@ class ProductController(private val productRepository: ProductRepository) {
     fun getProductById(@PathVariable id: String): ResponseEntity<Optional<Product>> {
         return ResponseEntity.ok(this.productRepository.findById(id))
     }
+
+    /**
+     * Delete request to remove a product by ID
+     */
+    @DeleteMapping("/{id}")
+    fun removeProduct(@PathVariable id: String) {
+        this.productRepository.deleteById(id)
+    }
 }
