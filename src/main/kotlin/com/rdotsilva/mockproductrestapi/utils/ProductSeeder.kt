@@ -8,13 +8,12 @@ import org.springframework.stereotype.Component
 import kotlin.random.Random
 
 @Component
-class ProductSeeder(private val productRepository: ProductRepository): ApplicationRunner {
+class ProductSeeder(private val productRepository: ProductRepository) : ApplicationRunner {
     /**
      * Generate 50 and seed 50 random products
      */
     override fun run(args: ApplicationArguments?) {
         for (i in 1..50) {
-            // TODO: Investigate seeder only seeding one item and IDs are missing
             val product = createRandomProduct(i)
             this.productRepository.save(product)
         }
