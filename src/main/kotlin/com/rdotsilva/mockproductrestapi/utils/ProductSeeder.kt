@@ -29,6 +29,7 @@ class ProductSeeder(private val productRepository: ProductRepository) : Applicat
             description = "Description # ${randomNumber + 1}",
             image = "http://lorempixel.com/200/200?=${Random.nextInt(10000)}",
             price = Random.nextInt(10, 100),
+            quantity = Random.nextInt(0, 25)
         )
     }
 }
