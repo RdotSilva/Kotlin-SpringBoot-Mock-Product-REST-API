@@ -42,4 +42,26 @@ class ProductController(private val productRepository: ProductRepository) {
     fun removeProduct(@PathVariable id: String) {
         this.productRepository.deleteById(id)
     }
+
+    /**
+     * Get request to fetch products that are in stock
+     */
+    @GetMapping("/")
+    fun getProductsInStock(
+        @RequestParam(
+            "inStock",
+        ) inStock: Boolean
+    ): ResponseEntity<List<Product>> {
+        var allProducts: List<Product> = this.productRepository.findAll()
+        var productsInStock = allProducts.filter { it.quantity > 0 }
+        var productsOutOfStock = allProducts.filter { it.quantity < 0 }
+
+        // TODO: Look into this, doesn't seem to be returning items out of stock
+        return if (inStock) {
+            ResponseEntity.ok(productsInStock)
+        } else {
+            ResponseEntity.ok(productsOutOfStock)
+        }
+
+    }
 }
