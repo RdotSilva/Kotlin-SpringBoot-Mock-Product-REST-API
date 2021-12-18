@@ -2,6 +2,7 @@ package com.rdotsilva.mockproductrestapi.utils
 
 import com.rdotsilva.mockproductrestapi.models.Product
 import com.rdotsilva.mockproductrestapi.repositories.ProductRepository
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component
@@ -9,13 +10,19 @@ import kotlin.random.Random
 
 @Component
 class ProductSeeder(private val productRepository: ProductRepository) : ApplicationRunner {
+    @Value("\${seeder.enableSeeder}")
+    val seederFlag: Boolean = false
+
     /**
-     * Generate 50 and seed 50 random products
+     * Generate and seed 50 random products
+     * Use the seederFlag config to enable/disable
      */
     override fun run(args: ApplicationArguments?) {
-        for (i in 1..50) {
-            val product = createRandomProduct(i)
-            this.productRepository.save(product)
+        if (seederFlag) {
+            for (i in 1..50) {
+                val product = createRandomProduct(i)
+                this.productRepository.save(product)
+            }
         }
     }
 
