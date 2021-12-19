@@ -29,7 +29,7 @@ class CustomerController(private val customerService: CustomerService) {
             defaultValue = "true"
         ) onMailingList: Boolean,
     ): ResponseEntity<List<Customer>> {
-        return ResponseEntity.ok(this.customerRepository.findByOnMailingList(onMailingList))
+        return ResponseEntity.ok(this.customerService.getAllCustomersOnMailingList(onMailingList))
     }
 
     /**
