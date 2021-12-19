@@ -2,20 +2,21 @@ package com.rdotsilva.mockproductrestapi.controllers
 
 import com.rdotsilva.mockproductrestapi.models.Customer
 import com.rdotsilva.mockproductrestapi.repositories.CustomerRepository
+import com.rdotsilva.mockproductrestapi.services.CustomerService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
 @RequestMapping("api/customers")
-class CustomerController(private val customerRepository: CustomerRepository) {
+class CustomerController(private val customerService: CustomerService) {
 
     /**
      * Get request to fetch all customers
      */
     @GetMapping()
     fun getAllCustomers(): ResponseEntity<List<Customer>> {
-        return ResponseEntity.ok(this.customerRepository.findAll())
+        return ResponseEntity.ok(this.customerService.getAllCustomers())
     }
 
     /**
