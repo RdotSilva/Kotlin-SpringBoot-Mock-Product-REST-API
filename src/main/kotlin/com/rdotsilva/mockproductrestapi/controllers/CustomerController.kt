@@ -45,7 +45,7 @@ class CustomerController(private val customerService: CustomerService) {
      */
     @PostMapping()
     fun addCustomer(@RequestBody customer: Customer) {
-        this.customerRepository.save(customer)
+        this.customerService.addCustomer(customer)
     }
 
     /**
@@ -53,6 +53,6 @@ class CustomerController(private val customerService: CustomerService) {
      */
     @DeleteMapping("/{id}")
     fun removeCustomer(@PathVariable id: String) {
-        this.customerRepository.deleteById(id)
+        this.customerService.removeCustomer(id)
     }
 }
