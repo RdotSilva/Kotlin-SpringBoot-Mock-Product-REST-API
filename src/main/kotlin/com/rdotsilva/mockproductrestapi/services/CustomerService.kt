@@ -4,9 +4,7 @@ import com.rdotsilva.mockproductrestapi.models.Customer
 import com.rdotsilva.mockproductrestapi.repositories.CustomerRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @Service
@@ -32,5 +30,21 @@ class CustomerService(private val customerRepository: CustomerRepository) {
     fun getCustomerById(id: String): Optional<Customer> {
         // Do validation here and throw exception if data is bad -> try/catch inside controller and return correct status and error message
         return this.customerRepository.findById(id)
+    }
+
+    /**
+     * Create a new customer
+     */
+    @PostMapping()
+    fun addCustomer(@RequestBody customer: Customer) {
+        this.customerRepository.save(customer)
+    }
+
+    /**
+     * Remove an existing customer
+     */
+    @DeleteMapping("/{id}")
+    fun removeCustomer(@PathVariable id: String) {
+        this.customerRepository.deleteById(id)
     }
 }
