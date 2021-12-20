@@ -30,6 +30,7 @@ class CustomerService(private val customerRepository: CustomerRepository) {
      * Get customer by ID
      */
     fun getCustomerById(id: String): Optional<Customer> {
+        // Do validation here and throw exception if data is bad -> try/catch inside controller and return correct status and error message
         return this.customerRepository.findById(id)
     }
 }
