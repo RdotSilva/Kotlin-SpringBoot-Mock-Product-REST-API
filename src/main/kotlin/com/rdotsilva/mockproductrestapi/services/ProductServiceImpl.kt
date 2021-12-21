@@ -15,4 +15,11 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
         return this.productRepository.findAll()
     }
 
+    /**
+     * Get a list of all products matching a specific title
+     */
+    override fun getProductByTitle(title: String): List<Product> {
+        return this.productRepository.searchByTitle(title)
+    }
+
 }
