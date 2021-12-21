@@ -1,0 +1,3 @@
+package com.rdotsilva.mockproductrestapi.services
+
+class ProductService
