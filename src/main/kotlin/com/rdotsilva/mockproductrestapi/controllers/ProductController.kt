@@ -25,7 +25,7 @@ class ProductController(private val productService: ProductService) {
      */
     @GetMapping("/search")
     fun getProductByTitle(@RequestParam("title", defaultValue = "") title: String): ResponseEntity<List<Product>> {
-        return ResponseEntity.ok(this.productRepository.searchByTitle(title))
+        return ResponseEntity.ok(this.productService.getProductByTitle(title))
     }
 
     /**
