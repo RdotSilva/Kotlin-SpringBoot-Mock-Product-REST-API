@@ -3,7 +3,11 @@ package com.rdotsilva.mockproductrestapi.services
 
 import com.rdotsilva.mockproductrestapi.models.Product
 import com.rdotsilva.mockproductrestapi.repositories.ProductRepository
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import java.util.*
 
 @Service
 class ProductServiceImpl(private val productRepository: ProductRepository) : ProductService {
@@ -20,6 +24,13 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
      */
     override fun getProductByTitle(title: String): List<Product> {
         return this.productRepository.searchByTitle(title)
+    }
+
+    /**
+     * Get a product by ID
+     */
+    override fun getProductById(id: String): Optional<Product> {
+        return this.productRepository.findById(id)
     }
 
 }
