@@ -33,7 +33,7 @@ class ProductController(private val productService: ProductService) {
      */
     @GetMapping("/{id}")
     fun getProductById(@PathVariable id: String): ResponseEntity<Optional<Product>> {
-        return ResponseEntity.ok(this.productRepository.findById(id))
+        return ResponseEntity.ok(this.productService.getProductById(id))
     }
 
     /**
@@ -41,7 +41,7 @@ class ProductController(private val productService: ProductService) {
      */
     @DeleteMapping("/{id}")
     fun removeProduct(@PathVariable id: String) {
-        this.productRepository.deleteById(id)
+        this.productService.removeProduct(id)
     }
 
     /**
