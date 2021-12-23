@@ -53,16 +53,6 @@ class ProductController(private val productService: ProductService) {
             "inStock",
         ) inStock: Boolean
     ): ResponseEntity<List<Product>> {
-        var allProducts: List<Product> = this.productRepository.findAll()
-        var productsInStock = allProducts.filter { it.quantity > 0 }
-        var productsOutOfStock = allProducts.filter { it.quantity < 0 }
-
-        // TODO: Look into this, doesn't seem to be returning items out of stock
-        return if (inStock) {
-            ResponseEntity.ok(productsInStock)
-        } else {
-            ResponseEntity.ok(productsOutOfStock)
-        }
-
+        return ResponseEntity.ok(this.productService.getProductsInStock(inStock))
     }
 }
