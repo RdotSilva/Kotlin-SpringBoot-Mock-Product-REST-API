@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestParam
 import java.util.*
 
 @Service
@@ -39,6 +40,23 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
      */
     override fun removeProduct(id: String) {
         return this.productRepository.deleteById(id)
+    }
+
+    /**
+     * Get products that are in stock or out of stock
+     */
+    override fun getProductsInStock(inStock: Boolean): List<Product> {
+        var allProducts: List<Product> = this.productRepository.findAll()
+        var productsInStock = allProducts.filter { it.quantity > 0 }
+        var productsOutOfStock = allProducts.filter { it.quantity < 0 }
+
+        // TODO: Look into this, doesn't seem to be returning items out of stock
+        return if (inStock) {
+            productsInStock
+        } else {
+            productsOutOfStock
+        }
+
     }
 
 }
