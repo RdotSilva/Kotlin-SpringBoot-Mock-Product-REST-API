@@ -43,4 +43,11 @@ class CustomerServiceImpl(private val customerRepository: CustomerRepository) {
     fun removeCustomer(id: String) {
         this.customerRepository.deleteById(id)
     }
+
+    /**
+     * Get a list of all customer emails on mailing list
+     */
+    fun getCustomersByFirstName(firstName: String): List<Customer> {
+        return this.customerRepository.searchByName(firstName)
+    }
 }
