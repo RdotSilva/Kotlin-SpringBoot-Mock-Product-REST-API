@@ -2,9 +2,7 @@ package com.rdotsilva.mockproductrestapi.services
 
 import com.rdotsilva.mockproductrestapi.models.Customer
 import com.rdotsilva.mockproductrestapi.repositories.CustomerRepository
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @Service
@@ -35,16 +33,14 @@ class CustomerServiceImpl(private val customerRepository: CustomerRepository) {
     /**
      * Create a new customer
      */
-    @PostMapping()
-    fun addCustomer(@RequestBody customer: Customer) {
+    fun addCustomer(customer: Customer) {
         this.customerRepository.save(customer)
     }
 
     /**
      * Remove an existing customer
      */
-    @DeleteMapping("/{id}")
-    fun removeCustomer(@PathVariable id: String) {
+    fun removeCustomer(id: String) {
         this.customerRepository.deleteById(id)
     }
 }
