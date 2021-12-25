@@ -10,6 +10,6 @@ interface CustomerRepository : MongoRepository<Customer, String> {
     @Query("{'onMailingList': ?0}")
     fun findByOnMailingList(onMailingList: Boolean): List<Customer>
 
-    @Query("{'name': {\$regex: ?0, \$options: 'i' }}")
+    @Query("{'firstName': {\$regex: ?0, \$options: 'i' }}")
     fun searchByName(searchQuery: String):  List<Customer>
 }
