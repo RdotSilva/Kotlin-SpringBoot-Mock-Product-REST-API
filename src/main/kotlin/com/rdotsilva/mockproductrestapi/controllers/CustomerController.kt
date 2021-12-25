@@ -1,7 +1,6 @@
 package com.rdotsilva.mockproductrestapi.controllers
 
 import com.rdotsilva.mockproductrestapi.models.Customer
-import com.rdotsilva.mockproductrestapi.repositories.CustomerRepository
 import com.rdotsilva.mockproductrestapi.services.CustomerService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -54,5 +53,18 @@ class CustomerController(private val customerService: CustomerService) {
     @DeleteMapping("/{id}")
     fun removeCustomer(@PathVariable id: String) {
         this.customerService.removeCustomer(id)
+    }
+
+    /**
+     * Get request to fetch customers by first name
+     */
+    @GetMapping("/")
+    fun getCustomersByFirstName(
+        @RequestParam(
+            "firstName",
+            defaultValue = ""
+        ) firstName: String,
+    ): ResponseEntity<List<Customer>> {
+        return ResponseEntity.ok(this.customerService.getCustomerByFirstName(firstName))
     }
 }
