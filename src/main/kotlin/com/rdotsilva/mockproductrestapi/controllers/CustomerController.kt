@@ -67,4 +67,17 @@ class CustomerController(private val customerService: CustomerService) {
     ): ResponseEntity<List<Customer>> {
         return ResponseEntity.ok(this.customerService.getCustomerByFirstName(firstName))
     }
+
+    /**
+     * Get request to fetch customers by last name
+     */
+    @GetMapping("/")
+    fun getCustomerByLastName(
+        @RequestParam(
+            "lastName",
+            defaultValue = ""
+        ) lastName: String,
+    ): ResponseEntity<List<Customer>> {
+        return ResponseEntity.ok(this.customerService.getCustomerByLastName(lastName))
+    }
 }
