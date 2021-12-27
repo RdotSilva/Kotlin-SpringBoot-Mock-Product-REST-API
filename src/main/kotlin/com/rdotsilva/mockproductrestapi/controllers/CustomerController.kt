@@ -1,7 +1,6 @@
 package com.rdotsilva.mockproductrestapi.controllers
 
 import com.rdotsilva.mockproductrestapi.models.Customer
-import com.rdotsilva.mockproductrestapi.services.CustomerService
 import com.rdotsilva.mockproductrestapi.services.CustomerServiceImpl
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
