@@ -45,9 +45,16 @@ class CustomerServiceImpl(private val customerRepository: CustomerRepository) : 
     }
 
     /**
-     * Get a list of all customer emails on mailing list
+     * Get a list of customers matching a first name
      */
     override fun getCustomersByFirstName(firstName: String): List<Customer> {
         return this.customerRepository.searchByFirstName(firstName)
+    }
+
+    /**
+     * Get a list of customers matching a last name
+     */
+    override fun getCustomersByLastName(lastName: String): List<Customer> {
+        return this.customerRepository.searchByLastName(lastName)
     }
 }
