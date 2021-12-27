@@ -2,13 +2,14 @@ package com.rdotsilva.mockproductrestapi.controllers
 
 import com.rdotsilva.mockproductrestapi.models.Customer
 import com.rdotsilva.mockproductrestapi.services.CustomerService
+import com.rdotsilva.mockproductrestapi.services.CustomerServiceImpl
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
 @RequestMapping("api/customers")
-class CustomerController(private val customerService: CustomerService) {
+class CustomerController(private val customerService: CustomerServiceImpl) {
 
     /**
      * Get request to fetch all customers
@@ -65,7 +66,7 @@ class CustomerController(private val customerService: CustomerService) {
             defaultValue = ""
         ) firstName: String,
     ): ResponseEntity<List<Customer>> {
-        return ResponseEntity.ok(this.customerService.getCustomerByFirstName(firstName))
+        return ResponseEntity.ok(this.customerService.getCustomersByFirstName(firstName))
     }
 
     /**
@@ -78,6 +79,6 @@ class CustomerController(private val customerService: CustomerService) {
             defaultValue = ""
         ) lastName: String,
     ): ResponseEntity<List<Customer>> {
-        return ResponseEntity.ok(this.customerService.getCustomerByLastName(lastName))
+        return ResponseEntity.ok(this.customerService.getCustomersByLastName(lastName))
     }
 }
