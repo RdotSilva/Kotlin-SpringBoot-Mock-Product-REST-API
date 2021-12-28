@@ -8,4 +8,7 @@ interface ProductRepository : MongoRepository<Product, String> {
 
     @Query("{'title': {\$regex: ?0, \$options: 'i' }}")
     fun searchByTitle(searchQuery: String): List<Product>
+
+    @Query("{'category': {\$regex: ?0, \$options: 'i' }}")
+    fun searchByCategory(searchQuery: String): List<Product>
 }
