@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 class Product(
     @Id val _id: ObjectId = ObjectId.get(),
     val title: String,
+    val category: String,
     val description: String,
     val image: String,
     val price: Int,
