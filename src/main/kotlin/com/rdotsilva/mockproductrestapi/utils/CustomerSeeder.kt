@@ -36,7 +36,8 @@ class CustomerSeeder(private val customerRepository: CustomerRepository) : Appli
             firstName = faker.name.firstName(),
             lastName = faker.name.lastName(),
             email = faker.internet.safeEmail(),
-            onMailingList = Math.random() < 0.5
+            onMailingList = Math.random() < 0.5,
+            zipCode = faker.address.postcode()
         )
     }
 }
