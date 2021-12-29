@@ -53,4 +53,12 @@ class ProductController(private val productService: ProductServiceImpl) {
     ): ResponseEntity<List<Product>> {
         return ResponseEntity.ok(this.productService.getProductsInStock(inStock))
     }
+
+    /**
+     * Get request to fetch product by category
+     */
+    @GetMapping("/search")
+    fun getProductsByCategory(@RequestParam("category", defaultValue = "") category: String): ResponseEntity<List<Product>> {
+        return ResponseEntity.ok(this.productService.getProductsByCategory(category))
+    }
 }
