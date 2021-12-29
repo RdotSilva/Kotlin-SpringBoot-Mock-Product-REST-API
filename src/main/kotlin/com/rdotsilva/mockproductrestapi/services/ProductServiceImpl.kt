@@ -19,8 +19,8 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
     /**
      * Get a list of all matching a specific category
      */
-    override fun getProductsByCategory(): List<Product> {
-        return this.productRepository.searchByCategory()
+    override fun getProductsByCategory(category: String): List<Product> {
+        return this.productRepository.searchByCategory(category)
     }
 
     /**
