@@ -12,7 +12,7 @@ import kotlin.random.Random
 class ProductSeeder(private val productRepository: ProductRepository) : ApplicationRunner {
     @Value("\${seeder.enableSeeder}")
     val seederFlag: Boolean = false
-    val productCategories = listOf("electronics", "digital", "household", "edible" )
+    val productCategories = listOf("electronics", "digital", "household", "edible", "health")
 
     /**
      * Generate and seed 50 random products
