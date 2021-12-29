@@ -1,16 +1,14 @@
 package com.rdotsilva.mockproductrestapi.controllers
 
-import com.rdotsilva.mockproductrestapi.models.Customer
 import com.rdotsilva.mockproductrestapi.models.Product
-import com.rdotsilva.mockproductrestapi.repositories.ProductRepository
-import com.rdotsilva.mockproductrestapi.services.ProductService
+import com.rdotsilva.mockproductrestapi.services.ProductServiceImpl
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
 @RequestMapping("api/products")
-class ProductController(private val productService: ProductService) {
+class ProductController(private val productService: ProductServiceImpl) {
 
     /**
      * Get request to fetch all products
