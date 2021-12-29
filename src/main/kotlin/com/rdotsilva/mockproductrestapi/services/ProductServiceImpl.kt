@@ -22,6 +22,13 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
     }
 
     /**
+     * Get a list of all matching a specific category
+     */
+    override fun getProductsByCategory(): List<Product> {
+        return this.productRepository.searchByCategory()
+    }
+
+    /**
      * Get a list of all products matching a specific title
      */
     override fun getProductByTitle(title: String): List<Product> {
