@@ -14,4 +14,7 @@ interface CustomerRepository : MongoRepository<Customer, String> {
 
     @Query("{'lastName': {\$regex: ?0, \$options: 'i' }}")
     fun searchByLastName(searchQuery: String): List<Customer>
+
+    @Query("{'postCode': {\$regex: ?0, \$options: 'i' }}")
+    fun searchByPostCode(searchQuery: String): List<Customer>
 }
