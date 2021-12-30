@@ -8,6 +8,7 @@ interface CustomerService {
     fun getAllCustomersOnMailingList(onMailingList: Boolean): List<Customer>
     fun getCustomersByFirstName(firstName: String): List<Customer>
     fun getCustomersByLastName(lastName: String): List<Customer>
+    fun getCustomerByPostCode(postCode: String): List<Customer>
     fun getCustomerById(id: String): Optional<Customer>
     fun addCustomer(customer: Customer)
     fun removeCustomer(id: String)
