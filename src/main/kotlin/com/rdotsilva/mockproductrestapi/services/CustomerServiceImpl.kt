@@ -57,4 +57,11 @@ class CustomerServiceImpl(private val customerRepository: CustomerRepository) : 
     override fun getCustomersByLastName(lastName: String): List<Customer> {
         return this.customerRepository.searchByLastName(lastName)
     }
+
+    /**
+     * Get a list of customers matching post code
+     */
+    override fun getCustomerByPostCode(postCode: String): List<Customer> {
+        return this.customerRepository.searchByPostCode(postCode)
+    }
 }

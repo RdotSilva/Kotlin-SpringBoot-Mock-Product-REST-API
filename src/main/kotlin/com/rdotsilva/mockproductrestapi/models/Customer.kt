@@ -10,6 +10,6 @@ class Customer(
     var firstName: String,
     var lastName: String,
     var email: String,
-    var onMailingList: Boolean
+    var onMailingList: Boolean,
     var zipCode: String
 )
