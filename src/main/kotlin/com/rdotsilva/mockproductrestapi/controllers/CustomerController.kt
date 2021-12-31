@@ -36,7 +36,7 @@ class CustomerController(private val customerService: CustomerServiceImpl) {
      */
     @GetMapping("/{id}")
     fun getCustomersById(@PathVariable id: String): ResponseEntity<Optional<Customer>> {
-        return ResponseEntity.ok(this.customerService.getCustomerById(id))
+        return ResponseEntity.ok(this.customerService.getCustomersById(id))
     }
 
     /**

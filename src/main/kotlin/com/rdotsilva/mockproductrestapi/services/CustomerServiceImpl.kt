@@ -25,7 +25,7 @@ class CustomerServiceImpl(private val customerRepository: CustomerRepository) : 
     /**
      * Get customer by ID
      */
-    override fun getCustomerById(id: String): Optional<Customer> {
+    override fun getCustomersById(id: String): Optional<Customer> {
         // Do validation here and throw exception if data is bad -> try/catch inside controller and return correct status and error message
         return this.customerRepository.findById(id)
     }
@@ -61,7 +61,7 @@ class CustomerServiceImpl(private val customerRepository: CustomerRepository) : 
     /**
      * Get a list of customers matching post code
      */
-    override fun getCustomerByPostCode(postCode: String): List<Customer> {
+    override fun getCustomersByPostCode(postCode: String): List<Customer> {
         return this.customerRepository.searchByPostCode(postCode)
     }
 }
