@@ -35,7 +35,7 @@ class CustomerController(private val customerService: CustomerServiceImpl) {
      * Get request to fetch customer by ID
      */
     @GetMapping("/{id}")
-    fun getCustomerById(@PathVariable id: String): ResponseEntity<Optional<Customer>> {
+    fun getCustomersById(@PathVariable id: String): ResponseEntity<Optional<Customer>> {
         return ResponseEntity.ok(this.customerService.getCustomerById(id))
     }
 
@@ -72,7 +72,7 @@ class CustomerController(private val customerService: CustomerServiceImpl) {
      * Get request to fetch customers by last name
      */
     @GetMapping("/")
-    fun getCustomerByLastName(
+    fun getCustomersByLastName(
         @RequestParam(
             "lastName",
             defaultValue = ""
