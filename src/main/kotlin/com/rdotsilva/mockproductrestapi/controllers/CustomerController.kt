@@ -80,4 +80,17 @@ class CustomerController(private val customerService: CustomerServiceImpl) {
     ): ResponseEntity<List<Customer>> {
         return ResponseEntity.ok(this.customerService.getCustomersByLastName(lastName))
     }
+
+    /**
+     * Get request to fetch customers post code
+     */
+    @GetMapping("/")
+    fun getCustomersByPostCode(
+        @RequestParam(
+            "postCode",
+            defaultValue = ""
+        ) postCode: String,
+    ): ResponseEntity<List<Customer>> {
+        return ResponseEntity.ok(this.customerService.getCustomersByLastName(postCode))
+    }
 }
