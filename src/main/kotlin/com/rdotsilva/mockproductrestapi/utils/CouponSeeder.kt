@@ -15,7 +15,7 @@ class CouponSeeder(private val couponRepository: CouponRepository) : Application
     val seederFlag: Boolean = false
 
     /**
-     * Generate and seed 50 random customers
+     * Generate and seed 50 random coupons
      * Use the seederFlag config to enable/disable
      */
     override fun run(args: ApplicationArguments?) {
@@ -25,5 +25,24 @@ class CouponSeeder(private val couponRepository: CouponRepository) : Application
                 this.couponRepository.save(coupon)
             }
         }
+    }
+
+    /**
+     * Generate a random mock coupon with unique metadata
+     * @param randomNumber random number used to generate coupon metadata
+     */
+    fun createRandomCoupon(randomNumber: Int): Coupon {
+        val faker = Faker()
+        val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+        val randomString = (1..15)
+            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map(charPool::get)
+            .joinToString("")
+
+        return Coupon(
+            code = randomString,
+            discount = Random.nextInt(1, 20),
+            uses = Random.nextInt(1, 10),
+        )
     }
 }
